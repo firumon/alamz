@@ -1,0 +1,27 @@
+7zip
+heidi
+apache
+DB browser sqlite
+photoshop
+npp
+php
+MySQL
+MailBird
+composer
+Teamviewer
+Git
+PhPStorm
+noede
+touch pad driver
+side kick
+
+
+To Git
+LLM
+SDPI
+
+
+
+SDPI From host
+LLM To Git
+

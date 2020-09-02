@@ -1,0 +1,1 @@
+@unless($record->{ HEAD_FIELD_DISPLAY['Status - Broker'] } === 'Submitted' && $record->{ HEAD_FIELD_DISPLAY['Status - Compliance'] } !== 'Rejected')<button class="btn btn-xs btn-info" onclick="SubmitRecord({{ $record->id }})">Submit</button>@endunless

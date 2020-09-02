@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Submit & Review</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript">
+        let labels = ['Account Name','Date','Symbol','Oper','Quantity','Price','Remaining','Broker','Order Id','T Quantity','Avg. Price','T Order','Entry Time & Date','Order Status','Note - Review','Reviewed By'];
+        let records = [['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','03-Apr','EMIRATESNBD','Sell','25,000',' 11.200 ','                  -   ','Alaous Khadour','1745069','2,50,000',' 11.205 ',' 25,000 ','10:03:48   03-Apr','Not Accepted','order type(limit price) should be one order','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','03-Apr','EMIRATESNBD','Sell','25,000',' 11.200 ','                  -   ','Alaous Khadour','1745071','2,50,000',' 11.205 ',' 25,000 ','10:03:55   03-Apr','Not Accepted','order type(limit price) should be one order','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','03-Apr','EMIRATESNBD','Sell','25,000',' 11.200 ','                  -   ','Alaous Khadour','1745084','2,50,000',' 11.205 ',' 25,000 ','10:06:19   03-Apr','Not Accepted','order type(limit price) should be one order','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','03-Apr','EMIRATESNBD','Sell','1,50,000',' 11.208 ','                  -   ','Alaous Khadour','1745393','2,50,000',' 11.205 ',' 150,000 ','11:57:06   03-Apr','Not Accepted','order type(limit price) should be one order','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','03-Apr','EMIRATESNBD','Sell','25,000',' 11.200 ','                  -   ','Alaous Khadour','1745397','2,50,000',' 11.205 ',' 25,000 ','11:58:08   03-Apr','Not Accepted','order type(limit price) should be one order','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','04-Apr','EMAAR','Buy','10,000',' 5.028 ','                  -   ','Alaous Khadour','1745904','20,000',' 5.029 ',' 10,000 ','10:46:57   04-Apr','Not Accepted','order type is wrong','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','04-Apr','EMAAR','Buy','10,000',' 5.030 ','                  -   ','Alaous Khadour','1745908','20,000',' 5.029 ',' 10,000 ','10:48:35   04-Apr','Not Accepted','order type is wrong','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','08-Apr','ARTC','Buy','5,00,000',' 2.172 ','                  -   ','Alaous Khadour','1746994','10,50,000',' 2.165 ',' 500,000 ','10:00:04   08-Apr','Not Complete','date is wrong','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','08-Apr','ARTC','Buy','50,000',' 2.150 ','                  -   ','Alaous Khadour','1747439','10,50,000',' 2.165 ',' 50,000 ','13:31:01   08-Apr','Not Complete','date is wrong','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','08-Apr','ARTC','Buy','5,00,000',' 2.160 ','                  -   ','Alaous Khadour','1747460','10,50,000',' 2.165 ',' 500,000 ','13:37:49   08-Apr','Not Complete','date is wrong','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','08-Apr','SALAMA','Buy','15,00,000',' 0.479 ','                  -   ','Alaous Khadour','1746992','15,00,000',' 0.479 ',' 1,500,000 ','10:00:01   08-Apr','Not Accepted','order type should be limit price','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','15-Apr','OILC','Sell','85,000',' 1.160 ','                  -   ','Alaous Khadour','1748974','85,000',' 1.160 ',' 85,000 ','12:32:12   10-Apr','Not Complete','order validity wrong','Ehab'],['MAHA MOHAMEDSAEED HASAN AL HALABI / N','15-Apr','SHUAA','Sell','1,10,350',' 0.960 ','                  -   ','Alaous Khadour','1750651','1,10,350',' 0.960 ',' 110,350 ','10:15:10   15-Apr','Not Accepted','it should be more than one order','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','16-Apr','GFH','Sell','6,00,000',' 1.070 ','                  -   ','Alaous Khadour','1750698','6,00,000',' 1.070 ',' 600,000 ','10:29:49   15-Apr','Not Accepted','order type should limit price','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N / SAR','17-Apr','1120','Sell','4,000',' 73.900 ','                  -   ','Alaous Khadour','1746925','4,000',' 73.900 ',' 4,000 ','15:58:57   07-Apr','Not Found','In the office ','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','18-Apr','NBAD','Sell','1,906',' 15.940 ','                  -   ','Alaous Khadour','1753425','1,906',' 15.940 ',' 1,906 ','11:20:09   18-Apr','Not Accepted','original order not found','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','22-Apr','AIRARABIA','Buy','3,10,313',' 1.010 ','                  -   ','Alaous Khadour','1752517','6,10,313',' 1.010 ',' 310,313 ','10:09:50   17-Apr','Not Complete','date is wrong','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','22-Apr','AIRARABIA','Buy','3,00,000',' 1.010 ','                  -   ','Alaous Khadour','1755047','6,10,313',' 1.010 ',' 300,000 ','13:20:24   22-Apr','Not Complete','date is wrong','Ehab'],['PIERRE DAOUD REZKO / N','01-Apr','EMIRATESNBD','Buy','3,757',' 9.150 ','','Alaous Khadour','1743953','','','3,757','10:57:23   01-Apr','Not Found','','Ehab'],['SAEED AHMED OMRAN AL MAZROUEI / M','03-Apr','MANAZEL','Buy','5,00,000',' 0.393 ','','Alaous Khadour','1745421','','','5,00,000','12:10:16   03-Apr','Not Accepted','Because the quantity is different','Ehab'],['SAEED AHMED OMRAN AL MAZROUEI / M','04-Apr','EMIRATESNBD','Sell','1,00,000',' 11.900 ','','Alaous Khadour','1745963','','','1,00,000','11:24:27   04-Apr','Not Complete','canceled order is not fount','Ehab'],['HAZZAA MOHAMED ABDULAZIZ RUBAYEA ALMHEIRI  / N','15-Apr','GFH','Sell','6,00,000',' 1.070 ','','Alaous Khadour','1750698','','','6,00,000','10:29:49   15-Apr','Not Accepted','it should be more than one order','Ehab'],['OMRAN MOHAMMED SALEH MAHMOOD HUSAIN ALKHOORI  / M','22-Apr','EMAARDEV','Sell','75,000',' 3.960 ','','Alaous Khadour','1754878','','','75,000','12:01:00   22-Apr','Not Found','','Ehab']];
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="container-fluid my-3">
+<!--    <ion-icon name="heart" size="large"></ion-icon>-->
+    <div id="app">
+        <div class="modal fade" tabindex="-1" role="dialog" id="viewModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ records[toView][viewTitle] }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row border-bottom py-2" v-for="(label,idx) in labels" :key="'view-'+toView+'-'+idx">
+                            <div class="col-4"><strong>{{ label }}</strong></div>
+                            <div class="col-1">:</div>
+                            <div class="col-7">{{ records[toView][idx] }}</div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4"><strong>Status</strong></div>
+                            <div class="col-1">:</div>
+                            <div class="col-7">{{ status[toView] }}</div>
+                        </div>
+                        <div class="row py-2 border-top" v-if="status[toView] === 'Submitted'">
+                            <div class="col-4"><strong>Submit Data</strong></div>
+                            <div class="col-1">:</div>
+                            <div class="col-7">
+                                <attachment-download :type="submitType[toView]" :name="submitData[toView]" v-if="submitType[toView] !== 'call'"></attachment-download>
+                                <span v-else>{{ submitData[toView] }} <small>({{ submitType[toView] }})</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="submitModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order: {{ records[toSubmit][submitTitle] }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" id="call-tab" data-toggle="tab" href="#call" role="tab" aria-controls="call" aria-selected="true">Call</a></li>
+                            <li class="nav-item"><a class="nav-link" id="mail-tab" data-toggle="tab" href="#mail" role="tab" aria-controls="mail" aria-selected="false">Mail</a></li>
+                            <li class="nav-item"><a class="nav-link" id="return-tab" data-toggle="tab" href="#return" role="tab" aria-controls="return" aria-selected="false">Return</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane show active py-4" id="call" role="tabpanel" aria-labelledby="call-tab">
+                                <input type="text" v-model="call" class="form-control" placeholder="Number">
+                            </div>
+                            <div class="tab-pane py-4" id="mail" role="tabpanel" aria-labelledby="mail-tab">
+                                <input type="file" name="mail" id="file-mail" class="form-control-file" placeholder="Attach File">
+                            </div>
+                            <div class="tab-pane py-4" id="return" role="tabpanel" aria-labelledby="return-tab">
+                                <form id="return-form"><input type="file" name="return" id="file-return" class="form-control-file" placeholder="Attach File"></form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary float-right" @click="doSubmit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="nav nav-tabs" id="myTab2" role="tablist">
+            <li class="nav-item"><a class="nav-link active" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="true">Data</a></li>
+            <li class="nav-item"><a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Review</a></li>
+            <li class="nav-item"><a class="nav-link" id="report-tab" data-toggle="tab" href="#report" role="tab" aria-controls="contact" aria-selected="false">Report</a></li>
+        </ul>
+        <div class="tab-content" id="myTab2Content">
+            <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
+                <div class="table-responsive mt-4">
+                    <table class="table table-sm table-hover">
+                        <thead><tr><th>#</th><th v-for="idx in tbl" :key="'data-thead'+idx">{{ labels[idx] }}</th><th>Status</th><th>Action</th></tr></thead>
+                        <tbody>
+                            <tr v-for="(record,no) in records" :key="'data-tbody-row'+no">
+                                <td>{{ no+1 }}</td>
+                                <td v-for="idx in tbl" :key="'data-record-'+no+'-'+idx">{{ record[idx] }}</td>
+                                <td>{{ status[no] }}</td>
+                                <td><button class="btn btn-sm btn-primary mr-1" @click="initSubmitData(no)">Submit</button><button class="btn btn-sm btn-primary" @click="viewData(no)">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                <div class="table-responsive mt-4">
+                    <table class="table table-sm table-hover">
+                        <thead><tr><th v-for="idx in tbl" :key="'review-thead'+idx">{{ labels[idx] }}</th><th>Action</th></tr></thead>
+                        <tbody>
+                        <tr v-for="(state,no) in status" v-if="state === 'Submitted'" :key="'review-tbody-row'+no">
+                            <td v-for="idx in tbl" :key="'review-record-'+no+'-'+idx">{{ records[no][idx] }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-info mr-1" @click="viewData(no)">View</button>
+                                <button class="btn btn-sm btn-success mr-1" @click="approveSubmitData(no)">Approve</button>
+                                <button class="btn btn-sm btn-warning" @click="rejectSubmitData(no)">Reject</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="report" role="tabpanel" aria-labelledby="report-tab">
+
+                <div class="card my-2">
+                    <div class="card-header bg-primary">New</div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead><tr><th v-for="idx in tbl" :key="'report-new-thead'+idx">{{ labels[idx] }}</th></tr></thead>
+                            <tbody><tr v-for="(state,no) in status" v-if="state === 'New'" :key="'report-new-tbody-row'+no"><td v-for="idx in tbl" :key="'report-new-record-'+no+'-'+idx">{{ records[no][idx] }}</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card my-2">
+                    <div class="card-header bg-warning">Submitted</div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead><tr><th v-for="idx in tbl" :key="'report-submitted-thead'+idx">{{ labels[idx] }}</th></tr></thead>
+                            <tbody><tr v-for="(state,no) in status" v-if="state === 'Submitted'" :key="'report-submitted-tbody-row'+no"><td v-for="idx in tbl" :key="'report-submitted-record-'+no+'-'+idx">{{ records[no][idx] }}</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card my-2">
+                    <div class="card-header  bg-success">Approved</div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead><tr><th v-for="idx in tbl" :key="'report-approved-thead'+idx">{{ labels[idx] }}</th></tr></thead>
+                            <tbody><tr v-for="(state,no) in status" v-if="state === 'Approved'" :key="'report-approved-tbody-row'+no"><td v-for="idx in tbl" :key="'report-approved-record-'+no+'-'+idx">{{ records[no][idx] }}</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card my-2">
+                    <div class="card-header bg-danger">Rejected</div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead><tr><th v-for="idx in tbl" :key="'report-rejected-thead'+idx">{{ labels[idx] }}</th></tr></thead>
+                            <tbody><tr v-for="(state,no) in status" v-if="state === 'Rejected'" :key="'report-rejected-tbody-row'+no"><td v-for="idx in tbl" :key="'report-rejected-record-'+no+'-'+idx">{{ records[no][idx] }}</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    Vue.component('attachment-download',{
+        template: '<a :href="name" download>{{ name }} <small>({{ type }})</small></a>',
+        props: ['name','type']
+    })
+</script>
+<script>
+    app = new Vue({
+        el: '#app',
+        data: {
+            labels,records,
+            tbl: [0,1,3,4,5,7,8],
+            toView: 0, toSubmit: 0,
+            submitTitle: 8, viewTitle: 0,
+            status: [], submitType: [], submitData: [],
+            call: null, mail: null, return: null,
+            submitItem: null
+        },
+        methods: {
+            viewData(idx){ this.toView = idx; $('#viewModal').modal('show') },
+            initSubmitData(idx){ this.toSubmit = idx; $('#submitModal').modal('show'); this.submitItem = 'call' },
+            doSubmit(){
+                this.$set(this.status,this.toSubmit,'Submitted');
+                this.$set(this.submitType,this.toSubmit,this.submitItem);
+                if(this.submitItem === 'call'){
+                    this.$set(this.submitData,this.toSubmit,this[this.submitItem]);
+                    $('#submitModal').modal('hide');
+                } else {
+                    let VM = this;
+                    var formData = new FormData(); formData.append('file',$('#file-'+this.submitItem)[0].files[0]);
+                    $.ajax({
+                        url: 'upload.php',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: 'POST',
+                        success: function(data){
+                            VM.$set(VM.submitData,VM.toSubmit,data);
+                            $('#submitModal').modal('hide');
+                        }
+                    });
+                }
+            },
+            approveSubmitData(no){ this.$set(this.status,no,'Approved'); },
+            rejectSubmitData(no){ this.$set(this.status,no,'Rejected'); },
+        },
+        created(){
+            records.forEach(record => { this.status.push('New'); this.submitType.push(null); this.submitData.push(null); })
+        }
+    })
+</script>
+<script>
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        let submitItem = e.target.getAttribute('aria-controls');
+        app.submitItem = submitItem;
+    })
+</script>
+</body>
+</html>
