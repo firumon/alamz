@@ -62,9 +62,9 @@
         </section>
     </div>
     <footer class="main-footer">
-        <strong>Copyright &copy; 2014-{{ date('Y')+1 }} <a href="http://firumon.com">AL RAMZ</a>.</strong>
+        <strong>Copyright &copy; 2014-{{ date('Y')+1 }} <a href="http://alramz.ae">AL RAMZ</a>.</strong>
         All rights reserved.
-        <div class="float-right d-none d-sm-inline-block"><b>Version</b> 1.0.0</div>
+        <div class="float-right d-none d-sm-inline-block"><b>Version</b> 3.8.0</div>
     </footer>
 </div>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
