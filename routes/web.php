@@ -45,6 +45,7 @@ Route::group([
             Route::view('rejected','admin.rejected')->name('admin.rejected');
             Route::view('approved','admin.approved')->name('admin.approved');
             Route::view('broker','admin.broker')->name('admin.broker');
+            Route::view('report','admin.report')->name('admin.report');
             Route::match(['get','post'],'admins',function (){ return view('admin.admins'); })->name('admins');
             Route::match(['get','post'],'brokers',function (){ return view('admin.brokers'); })->name('brokers');
             Route::match(['get','post'],'compliance',function (){ return view('admin.compliance'); })->name('compliance');
@@ -73,6 +74,7 @@ Route::group([
             Route::view('incomplete','compliance.incomplete')->name('compliance.incomplete');
             Route::view('export','compliance.export')->name('compliance.export');
             Route::view('broker','compliance.broker')->name('compliance.broker');
+            Route::view('report','compliance.report')->name('compliance.report');
         });
     });
 });
