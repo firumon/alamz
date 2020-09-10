@@ -38,6 +38,7 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+/tests
 
 # Laravel IDE helper
 *.meta.*
@@ -53,7 +54,7 @@ _ide_*
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+/.idea
 # Generated files
 .idea/**/contentModel.xml
 
