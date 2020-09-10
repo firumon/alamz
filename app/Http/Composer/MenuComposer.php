@@ -25,6 +25,7 @@
                 ['text' => 'BROKER RECORDS', 'href' => 'admin.broker', 'icon' => 'user-edit'],
                 ['text' => 'IMPORT', 'href' => 'import', 'icon' => 'file-import'],
                 ['text' => 'EXPORT', 'href' => 'admin.export', 'icon' => 'file-export'],
+                ['text' => 'REPORT', 'href' => 'admin.report', 'icon' => 'book'],
                 ['text' => 'USERS', 'href' => '#', 'icon' => 'user', 'submenu' => [
                     ['text' => 'ADMINS', 'href' => 'admins', 'icon' => 'users-cog'],
                     ['text' => 'BROKERS', 'href' => 'brokers', 'icon' => 'user-edit'],
@@ -53,6 +54,7 @@
                 ['text' => 'INCOMPLETE RECORDS', 'href' => 'compliance.incomplete', 'icon' => 'star-half-alt'],
                 ['text' => 'BROKER RECORDS', 'href' => 'compliance.broker', 'icon' => 'user-edit'],
                 ['text' => 'EXPORT', 'href' => 'compliance.export', 'icon' => 'file-export'],
+                ['text' => 'REPORT', 'href' => 'compliance.report', 'icon' => 'book'],
                 ['text' => 'PROFILE', 'href' => 'profile', 'icon' => 'id-badge'],
             ],
         ];
