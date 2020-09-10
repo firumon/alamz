@@ -12,6 +12,22 @@ function records($num,$conditions = [],$gScope = true){
     return compact('records','links');
 }
 
+function recordsBetween($start,$end){
+    $field = headValues(config('alramz.report.on'));
+    $format = config('alramz.report.format');
+    $condRaw = \Illuminate\Support\Facades\DB::raw("STR_TO_DATE(`$field`,'$format')");
+    $selRaw = \Illuminate\Support\Facades\DB::raw("STR_TO_DATE(`$field`,'$format') c_date");
+    return \App\Record::select(['*',$selRaw])->where($condRaw,'>=',$start)->where($condRaw,'<=',$end)->get();
+}
+
+function statusCount($items){
+    $pending = $items->count();
+    return collect(config('alramz.options.ComplianceStatus'))->mapWithKeys(function($status)use($items,&$pending){
+        $count = $items->where(headValues('Status - Compliance'),$status)->count(); $pending -= $count;
+        return [$status => $count];
+    })->merge(['Records to be submitted' => $pending,'Clearance' => '']);
+}
+
 function headValues($item,$type = 'string'){
     switch ($type){
         case 'string':
