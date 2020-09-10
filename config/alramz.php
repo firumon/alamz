@@ -26,6 +26,11 @@
             'string'    =>  ['Submit Type','Attachment','Compliance','Status - Broker','Status - Compliance','Note - Broker','Note - Compliance','Call Number','Call Extension'],
         ],
 
+        'fields'    =>  [
+            'broker_name'   =>  'BROKER',
+            'compliance_name'   =>  'Compliance',
+        ],
+
         'head_type' =>  [
             'text'      =>  ['index','string'],
             'number'    =>  ['integer','decimal'],
@@ -439,6 +444,11 @@
             'days'  =>  7,
             'format'    =>  'h:i a - D d/m',
             'count' =>  25
+        ],
+
+        'report'   =>  [
+            'on'    =>  'UPLOAD DATE',
+            'format'    =>  '%d-%m-%Y %H:%i', //MySQL format
         ],
 
         'record_view_heads'     =>  [
