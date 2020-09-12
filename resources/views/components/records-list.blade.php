@@ -5,7 +5,7 @@
 @php $bulk = $view['actions'] && !empty($view['actions']) && (in_array('submit',$view['actions']) || in_array('mark',$view['actions']) || in_array('undo',$view['actions'])) @endphp
 <div class="table-responsive"><form id="selected_records" onsubmit="return false;">
     <table class="table table-sm" id="records-list-table">
-        <thead><tr> @if($bulk) <td> </td> @endif @foreach($view['fields'] as $th)<th> {{ $th }} </th>@endforeach <th>&nbsp;</th></tr></thead>
+        <thead><tr> @if($bulk) <td><input type="checkbox" onchange="selectAll(this.checked)"></td> @endif @foreach($view['fields'] as $th)<th> {{ $th }} </th>@endforeach <th>&nbsp;</th></tr></thead>
         <tbody>
         @forelse($records as $record)
             <tr> @if($bulk) <td><input type="checkbox" name="records[]" value="{{ $record->id }}"></td> @endif
@@ -29,5 +29,8 @@
         $(function() {
             $("#records-list-table").tablesorter();
         });
+        function  selectAll(status){
+            $("[name^=records]").prop('checked',!!status)
+        }
     </script>
 @endpush
