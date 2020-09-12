@@ -12,7 +12,13 @@
 @section('title',$title)
 
 @section('button')
-{{--    <select class="form-control" onchange="location.href = '?broker=' + this.value"><option value="-">Select Broker</option>@forelse($brokers as $broker) <option value="{{ $broker->name }}" {{ request('broker') === $broker->name ? 'selected' : '' }}>{{ $broker->name }}</option> @empty <option>No Brokers Found</option> @endforelse</select>--}}
+    @if($hasDate)
+        <form><div class="form-inline">
+        <input type="text" class="form-control-sm text-center" name="start" id="datepicker-start">
+        &nbsp; TO &nbsp; <input type="text" class="form-control-sm text-center" name="end" id="datepicker-end">
+        &nbsp; &nbsp; <input type="submit" class="btn btn-info btn-sm" value="Regenerate" />
+    </div></form>
+    @endif
 @stop
 
 @section('content')
@@ -34,7 +40,10 @@
                     <tr><td ><div class="jumbotron text-center">No records</div></td></tr>
                 @endforelse
                 </tbody>
-                @if(!empty($Total))<tfoot><tr><th>Total</th>@foreach($Total as $th => $total) <th>{{ $total }}</th> @endforeach</tr></tfoot>@endif
+                @if(!empty($Total))<tfoot>
+                    <tr><th>Total</th>@foreach($Total as $th => $total) <th>{{ $total }}</th> @endforeach</tr>
+                    <tr><th colspan="{{ count($Total)+1 }}" class="text-right"><button class="btn btn-warning btn-sm" onclick="download()">Export as Excel</button></th></tr>
+                </tfoot>@endif
             </table>
         </div>
     @else
@@ -59,7 +68,6 @@
                         </div>
                     </div>
                 </div>
-    {{--            <select class="form-control" onchange="location.href = '?broker=' + this.value"><option value="-">-- Select --</option>@forelse($brokers as $broker) <option value="{{ $broker->name }}" {{ request('broker') === $broker->name ? 'selected' : '' }}>{{ $broker->name }}</option> @empty <option>No Brokers Found</option> @endforelse</select>--}}
             </div>
         </form>
     @endif
@@ -85,5 +93,26 @@
             },
             startDate: moment().subtract(30, 'days')
         })
+        function download(){
+            var downloadurl;
+            var dataFileType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById('report-list-table');
+            var btnHTMLData = $('tfoot tr:eq(1)',$(tableSelect)).html(); $('tfoot tr:eq(1)',$(tableSelect)).remove();
+            var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
+            $('tfoot',$(tableSelect)).append($('<tr>').html(btnHTMLData));
+            var filename = 'ALRAMZ_RECORD_STATUS_{{ date('Y_m_d_H_i_s') }}.xls';
+            downloadurl = document.createElement("a");
+            document.body.appendChild(downloadurl);
+            if(navigator.msSaveOrOpenBlob){
+                var blob = new Blob(['\ufeff', tableHTMLData], {
+                    type: dataFileType
+                });
+                navigator.msSaveOrOpenBlob( blob, filename);
+            }else{
+                downloadurl.href = 'data:' + dataFileType + ', ' + tableHTMLData;
+                downloadurl.download = filename;
+                downloadurl.click();
+            }
+        }
     </script>
 @endpush
