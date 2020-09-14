@@ -21,7 +21,7 @@ class RecordController extends Controller
                         $fields[Str::replaceFirst($kebab.'-','',$field)] = $value;
                 if($status === 'Submitted') $fields[$head['Status - Compliance']] = null;
                 Record::whereIn('id',$ids)->update($fields);
-                self::activity('Broker',$ids,$status || "NULL");
+                self::activity('Broker',$ids,$status ?: "NULL");
                 return redirect()->back()->with(['success' => true]);
             }
         }
@@ -32,11 +32,12 @@ class RecordController extends Controller
             $request = request()->all(); $record = Record::find($request['id']);
             $ids = request()->filled('records') ? array_unique(array_merge(explode(',',request('records')),[request('id')])) : [request('id')];
             if($ids && !empty($ids)){
-                $head = HEAD_FIELD_DISPLAY; $status = $request['status']; $note = $request['note'];
-                $fields = [$head['Status - Compliance'] => $status, $head['Note - Compliance'] => $note, $head['Compliance'] => Auth::user()->name];
+                $head = HEAD_FIELD_DISPLAY; $status = $note = $user = null;
+                if( $request['action'] !== 'undo') { $status = $request['status']; $note = $request['note']; $user = Auth::user()->name; }
+                $fields = [$head['Status - Compliance'] => $status, $head['Note - Compliance'] => $note, $head['Compliance'] => $user];
                 if($status === 'Incomplete') $fields[$head['Status - Broker']] = null;
                 Record::whereIn('id',$ids)->update($fields);
-                self::activity('Compliance',$ids,$status);
+                self::activity('Compliance',$ids,$status ?: "NULL");
                 return redirect()->back()->with(['success' => true]);
             }
         }

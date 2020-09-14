@@ -3,6 +3,7 @@
 @includeWhen($role === 'broker','components.submit-modal',['view' => $view, 'records' => $records])
 @includeWhen($role === 'broker','components.submit-undo-modal',['view' => $view, 'records' => $records])
 @includeWhen($role === 'compliance','components.mark-modal',['view' => $view, 'records' => $records])
+@includeWhen($role === 'compliance','components.mark-undo-modal',['view' => $view, 'records' => $records])
 @if(session()->has('success')) <div class="alert alert-success"> Record Status Updated Accordingly !</div> @endif
 @component('components.records-list',['view' => $view, 'records' => $records, 'links' => $links, 'search' => $search ?? true]) @endcomponent
 @push('js')

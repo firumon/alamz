@@ -21,9 +21,9 @@
                 <div class="card-header"><div class="card-title"><h4>Records to Review</h4></div></div>
                 <div class="card-body">
                     @php $view = config('alramz.views.compliance.dashboard.pending'); extract(records($view['paginate'],$view['conditions'],false)); @endphp
+                    @component('components.detail-modal',['view' => $view, 'records' => $records]) @endcomponent
+                    @component('components.mark-modal',['view' => $view, 'records' => $records]) @endcomponent
                     @component('components.records-list',['view' => $view, 'records' => $records, 'links' => $links, 'search' => false]) @endcomponent
-                    @component('components.mark-modal',['view' => $view, 'records' => $records]) @endcomponent
-                    @component('components.mark-modal',['view' => $view, 'records' => $records]) @endcomponent
                     @push('js')
                         <script type="text/javascript"> const records = @json(collect($records->items())->keyBy->id); </script>
                     @endpush
