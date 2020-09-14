@@ -323,7 +323,7 @@
                         'fields'    =>  ['ACCOUNT NAME','BROKER','ORDER ID','Compliance']
                     ],
                     'fields'    =>  ['ACCOUNT NAME','UPLOAD DATE','SYMBOL','OPER','UPLOAD DATE','ORDER ID','EXECUTED QTY','VALIDITY','AVG PRICE','ORDER STATUS','REMAINING'],
-                    'actions'   =>  ['detail-modal','detail-page']
+                    'actions'   =>  ['detail-modal','detail-page','mark-undo']
                 ],
                 'rejected'   =>  [
                     'paginate'  =>  5,
@@ -333,7 +333,7 @@
                         'fields'    =>  ['ACCOUNT NAME','BROKER','ORDER ID','Compliance']
                     ],
                     'fields'    =>  ['ACCOUNT NAME','UPLOAD DATE','SYMBOL','OPER','UPLOAD DATE','ORDER ID','EXECUTED QTY','VALIDITY','AVG PRICE','ORDER STATUS','REMAINING'],
-                    'actions'   =>  ['detail-modal','detail-page']
+                    'actions'   =>  ['detail-modal','detail-page','mark-undo']
                 ],
                 'incomplete'   =>  [
                     'paginate'  =>  5,
@@ -343,7 +343,7 @@
                         'fields'    =>  ['ORDER ID','ACCOUNT NAME','BROKER','Compliance']
                     ],
                     'fields'    =>  ['ACCOUNT NAME','UPLOAD DATE','SYMBOL','OPER','UPLOAD DATE','ORDER ID','EXECUTED QTY','VALIDITY','AVG PRICE','ORDER STATUS','REMAINING'],
-                    'actions'   =>  ['detail-modal','detail-page']
+                    'actions'   =>  ['detail-modal','detail-page','mark-undo']
                 ],
                 'broker'    =>  [
                     'new'   =>  [
