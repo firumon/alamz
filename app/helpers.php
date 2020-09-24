@@ -21,11 +21,12 @@ function recordsBetween($start,$end){
 }
 
 function statusCount($items){
-    $pending = $items->count();
-    return collect(config('alramz.options.ComplianceStatus'))->mapWithKeys(function($status)use($items,&$pending){
-        $count = $items->where(headValues('Status - Compliance'),$status)->count(); $pending -= $count;
+    $pending = $items->count(); $rejected = 0;
+    return collect(config('alramz.options.ComplianceStatus'))->mapWithKeys(function($status)use($items,&$pending,&$rejected){
+        $count = $items->where(headValues('Status - Compliance'),$status)->count();
+        $pending -= $count; if($status === 'Rejected') $rejected = $count;
         return [$status => $count];
-    })->merge(['Records to be submitted' => $pending,'Clearance' => '']);
+    })->merge(['Records to be submitted' => $pending,'Clearance' => ($pending === 0 && intval($rejected) > 0) ? 1 : 0]);
 }
 
 function headValues($item,$type = 'string'){

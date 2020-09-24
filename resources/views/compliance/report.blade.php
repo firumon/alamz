@@ -34,14 +34,14 @@
                 @forelse($records as $broker => $counts)
                     <tr>
                         <td>{{ $broker }}</td>
-                        @foreach($counts as $head => $count) <td>{{ $count }}</td> @php $Total[$head] += intval($count) @endphp @endforeach
+                        @foreach($counts as $head => $count) <td class="{{ $head }}">{{ $count }}</td> @php $Total[$head] += intval($count) @endphp @endforeach
                     </tr>
                 @empty
                     <tr><td ><div class="jumbotron text-center">No records</div></td></tr>
                 @endforelse
                 </tbody>
                 @if(!empty($Total))<tfoot>
-                    <tr><th>Total</th>@foreach($Total as $th => $total) <th>{{ $total }}</th> @endforeach</tr>
+                    <tr><th>Total</th>@foreach($Total as $th => $total) <th class="{{ $th }}">{{ $total }}</th> @endforeach</tr>
                     <tr><th colspan="{{ count($Total)+1 }}" class="text-right"><button class="btn btn-warning btn-sm" onclick="download()">Export as Excel</button></th></tr>
                 </tfoot>@endif
             </table>
@@ -78,6 +78,9 @@
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
     <script>
+        $(function(){
+            $('.Clearance').each(function(i,e){ $(e).html((parseInt($(e).text()) !== 0) ? '&#10004;' : '&#10008;') });
+        })
         $('#datepicker-start').daterangepicker({
             singleDatePicker: true,
             showDropdowns: true,
