@@ -26,7 +26,7 @@ function statusCount($items){
         $count = $items->where(headValues('Status - Compliance'),$status)->count();
         $pending -= $count; if($status === 'Rejected') $rejected = $count;
         return [$status => $count];
-    })->merge(['Records to be submitted' => $pending,'Clearance' => ($pending === 0 && intval($rejected) > 0) ? 1 : 0]);
+    })->merge(['Records to be submitted' => $pending,'Clearance' => ($pending + intval($rejected) > 0) ? 0 : 1]);
 }
 
 function headValues($item,$type = 'string'){
