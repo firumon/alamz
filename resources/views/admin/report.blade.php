@@ -79,7 +79,7 @@
     <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
     <script>
         $(function(){
-            $('.Clearance').each(function(i,e){ $(e).html((parseInt($(e).text()) !== 0) ? '&#10004;' : '&#10008;') });
+            $('.Clearance').each(function(i,e){ $(e).html((parseInt($(e).text()) !== 0) ? '&#10008;' : '&#10004;') });
         })
         $('#datepicker-start').daterangepicker({
             singleDatePicker: true,
