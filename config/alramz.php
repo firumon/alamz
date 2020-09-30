@@ -20,7 +20,7 @@
 
         'head_program'  =>  [
             'index'     =>  [],
-            'date'      =>  [],
+            'date'      =>  ['BROKER SUBMIT DATE','COMPLIANCE ACTION DATE'],
             'integer'   =>  [],
             'decimal'   =>  [],
             'string'    =>  ['Submit Type','Attachment','Compliance','Status - Broker','Status - Compliance','Note - Broker','Note - Compliance','Call Number','Call Extension'],
@@ -29,6 +29,11 @@
         'fields'    =>  [
             'broker_name'   =>  'BROKER',
             'compliance_name'   =>  'Compliance',
+        ],
+
+        'action_date'   =>  [
+            'broker_update_date'    =>  'BROKER SUBMIT DATE',
+            'compliance_update_date'    =>  'COMPLIANCE ACTION DATE',
         ],
 
         'head_type' =>  [

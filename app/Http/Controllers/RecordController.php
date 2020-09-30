@@ -16,6 +16,7 @@ class RecordController extends Controller
             if($ids && !empty($ids)){
                 $head = HEAD_FIELD_DISPLAY; $status = $type === 'Make Pending' ? 'Pending' : ($type === 'undo' ? null : 'Submitted'); $file_field = $head['Attachment']; $k_ff = $kebab . '-' . $file_field;
                 $fields = [$head['Submit Type'] => $type === 'undo' ? null : $type,$head['Status - Broker'] => $status,$file_field => self::store($k_ff)];
+                $fields[$head[config('alramz.action_date.broker_update_date')]] = $type === 'undo' ? null : now()->toDateTimeString();
                 foreach ($request as $field => $value)
                     if(Str::startsWith($field,$kebab) && $field !== $k_ff)
                         $fields[Str::replaceFirst($kebab.'-','',$field)] = $value;
@@ -36,6 +37,7 @@ class RecordController extends Controller
                 if( $request['action'] !== 'undo') { $status = $request['status']; $note = $request['note']; $user = Auth::user()->name; }
                 $fields = [$head['Status - Compliance'] => $status, $head['Note - Compliance'] => $note, $head['Compliance'] => $user];
                 if($status === 'Incomplete') $fields[$head['Status - Broker']] = null;
+                $fields[$head[config('alramz.action_date.compliance_update_date')]] = $request['action'] === 'undo' ? null : now()->toDateTimeString();
                 Record::whereIn('id',$ids)->update($fields);
                 self::activity('Compliance',$ids,$status ?: "NULL");
                 return redirect()->back()->with(['success' => true]);
