@@ -26,6 +26,7 @@
                 ['text' => 'IMPORT', 'href' => 'import', 'icon' => 'file-import'],
                 ['text' => 'EXPORT', 'href' => 'admin.export', 'icon' => 'file-export'],
                 ['text' => 'REPORT', 'href' => 'admin.report', 'icon' => 'book'],
+                ['text' => 'PM REPORT', 'href' => 'admin.pm_report', 'icon' => 'user-secret'],
                 ['text' => 'USERS', 'href' => '#', 'icon' => 'user', 'submenu' => [
                     ['text' => 'ADMINS', 'href' => 'admins', 'icon' => 'users-cog'],
                     ['text' => 'BROKERS', 'href' => 'brokers', 'icon' => 'user-edit'],

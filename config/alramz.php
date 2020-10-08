@@ -29,6 +29,7 @@
         'fields'    =>  [
             'broker_name'   =>  'BROKER',
             'compliance_name'   =>  'Compliance',
+            'pm_name'   =>  'ACCOUNT NAME',
         ],
 
         'action_date'   =>  [

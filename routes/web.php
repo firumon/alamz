@@ -46,6 +46,7 @@ Route::group([
             Route::view('approved','admin.approved')->name('admin.approved');
             Route::view('broker','admin.broker')->name('admin.broker');
             Route::view('report','admin.report')->name('admin.report');
+            Route::view('pm_report','admin.pm_report')->name('admin.pm_report');
             Route::match(['get','post'],'admins',function (){ return view('admin.admins'); })->name('admins');
             Route::match(['get','post'],'brokers',function (){ return view('admin.brokers'); })->name('brokers');
             Route::match(['get','post'],'compliance',function (){ return view('admin.compliance'); })->name('compliance');
